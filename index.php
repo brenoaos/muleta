@@ -1,3 +1,8 @@
+<<?php 
+  header("location: sistema.php");
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="pt-br"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
