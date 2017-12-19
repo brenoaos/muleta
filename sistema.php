@@ -31,7 +31,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </button>
-		  <a class="navbar-brand" href="#">Muleta</a>
+		  <a class="navbar-brand" href="/muleta">Muleta</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -71,10 +71,11 @@
 			echo '<script>console.log("'.base64_decode($_GET['p']).'")</script>';
 			
 			$dataHoje = date('Y-m-d');
-			
+
+			$pagina =  $t[1] == "" ?  "view/home.php" : "view/".$t[1].".php";
+
 			if(strtotime($dataHoje) == strtotime($t[0])){
-				$pagina =  $t[1] == "" ?  "view/home.php" : "view/".$t[1].".php";
-				
+
 				if(file_exists($pagina)){
 					include $pagina;
 				}
@@ -84,15 +85,14 @@
 			}
 			else{
 				
-				echo '<script>console.log("Data cripto: '.$t[0].'")</script>';
-				echo '<script>console.log("Data hoje: '.date('Y-m-d').'")</script>';
-				
-				if(file_exists($pagina)){
-					include $pagina;
+				if(!isset($t[0])){
+				 echo "<h1>Oops!.. Página não encontrada</h1>";
 				}
 				else{
-					echo "<h1>Oops!.. Página não encontrada</h1>";
+					
+					include $pagina;
 				}
+				
 				
 				
 				
@@ -104,7 +104,7 @@
     <!-- jQuery (obrigatório para plugins JavaScript do Bootstrap) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Inclui todos os plugins compilados (abaixo), ou inclua arquivos separadados se necessário -->
-    <script src="js/bootstrap.min.js"></script>
+    <!-- <script src="js/bootstrap.min.js"></script> -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>
 </html>
